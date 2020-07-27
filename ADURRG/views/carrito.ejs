@@ -1,0 +1,85 @@
+<%- include layouts/header.ejs %> 
+	<!--start-breadcrumbs-->
+	<div class="breadcrumbs">
+		<div class="container">
+			<div class="breadcrumbs-main">
+				<ol class="breadcrumb">
+					<li><a href="/">Inicio</a></li>
+					<li class="active">Carrito de Compras</li>
+				</ol>
+			</div>
+		</div>
+	</div>
+	<!--end-breadcrumbs-->
+	<!--start-ckeckout-->
+	<div class="ckeckout">
+		<div class="container">
+			<div class="ckeckout-top">
+			<div class=" cart-items heading">
+			 <h3>Productos en mi Carrito</h3> 
+			<div class="in-check" >
+				<ul class="unit">
+					<li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					Producto</span></li>
+					<li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nombre</span></li>		
+					<li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  Precio</span></li>
+					<li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  Cantidad</span></li>
+					<li>T</li>
+					<div class="clearfix"> </div>
+				</ul>
+				<% for(var micarro=0; micarro<Micarrito.length; micarro++) { %>
+				<ul class="cart-header">
+						 <li class="ring-in">
+							<a href="/info?id=<%=Micarrito[micarro].Idmanual %>" >
+	    						<img width="150" height="150" src="images/<%=Micarrito[micarro].imagen %>" class="img-responsive" alt="">
+     						</a>
+ 						</li>
+						<li><span><%=Micarrito[micarro].titulo %></span></li>
+						<li><span>$ <%=Micarrito[micarro].precio %>.00</span></li>
+						<li><span>1</span></li>
+						<li> 
+							<form method="POST" action="/carrito">							
+							<input type="hidden" name="idman" value="<%=Micarrito[micarro].Idmanual %>">
+							<% if(Micarrito[micarro].cantidaddispo!=0){ %>
+							<button style="margin-top: 16%;" type="submit" class="btn btn-danger">Eliminar</button>
+							<% }else{ %>
+							<button style="margin-top: 16%;" type="submit" class="btn btn-warning">Agotado Eliminar</button>
+							<% } %>							
+						    </form>
+						</li>
+					<div class="clearfix"> </div>
+				</ul>
+				<% } %> 
+				<% for(var fin=0; fin<Totalcarrito.length; fin++) { %>   
+				<ul class="cart-header2">
+						<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+						<li><span> </span></li>						
+						<li><span>Total: $<%=Totalcarrito[fin].total %>.00</span></li>						
+						<li><span></span></li>
+						<li> 
+						<% if(Totalcarrito[fin].cantidaddispo!=0){ %>
+							<% if(Totalcarrito[fin].totalproductos!=0){ %>		
+							<form method="POST" action="/pagocarro">
+								<input type="hidden" name="manua1" value="<%=Totalcarrito[fin].id %>"/>	
+								<input type="hidden" name="productpa" value="Pago de Manuales a ADURRG"/>									
+								<input type="hidden" name="descripmanu" value="Esta Pagando Multiples Manuales a la Página ADURRG"/>									
+								<input type="hidden" name="productpre" value="<%=Totalcarrito[fin].total %>">
+								<button style="margin-top: 10%;" type="submit" class="btn btn-success">Comprar Todo</button>
+							</form>
+							<% }else{ %>
+								<button style="margin-top: 16%;" class="btn btn-info">Carrito Vacio</button>
+							<% } %>		
+						<% }else{ %>
+							<button style="margin-top: 16%;" class="btn btn-warning">Productos agotados eliminalos</button>
+						<% } %>	
+						</li>
+						<div class="clearfix"> </div>
+				</ul> 
+				<% } %>   
+			</div>
+			</div>  
+		 </div>
+		</div>
+	</div>
+	<!--end-ckeckout--> 
+	<%- include layouts/footer.ejs %>

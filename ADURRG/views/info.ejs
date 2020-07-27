@@ -1,0 +1,163 @@
+<%- include layouts/header.ejs %> 
+	<!--start-breadcrumbs-->
+	<div class="breadcrumbs">
+		<div class="container">
+			<div class="breadcrumbs-main">
+				<ol class="breadcrumb">
+					<li><a href="/">Inicio</a></li>
+					<li class="active">Información del Manual</li>
+				</ol>
+			</div>
+		</div>
+	</div>
+	<!--end-breadcrumbs-->
+	<!--start-single-->
+	
+	<div class="single contact">
+		<div class="container">
+			<div class="single-main">
+				<% for(var manu=0; manu<Manual.length; manu++) { %>			
+				<div class="col-md-9 single-main-left">				
+				<div class="sngl-top">
+					<div class="col-md-5 single-top-left">	
+						<div class="flexslider">
+							<ul class="slides">
+								<li data-thumb="images/<%=Manual[manu].imagen %>">
+									<img src="images/<%=Manual[manu].imagen %>" />
+								</li>
+								<li data-thumb="images/<%=Manual[manu].imagen %>">
+									<img src="images/<%=Manual[manu].imagen %>" />
+								</li>									 
+							</ul>
+						</div>
+                        <!-- FlexSlider -->
+                        <script defer src="/js/jquery.flexslider.js"></script>
+                        <link rel="stylesheet" href="/css/flexslider.css" type="text/css" media="screen" />
+                <script>
+                // Can also be used with $(document).ready()
+                $(window).load(function() {
+                $('.flexslider').flexslider({
+                animation: "slide",
+                controlNav: "thumbnails"
+                });
+                });
+                </script>
+				</div>	
+				<div class="col-md-7 single-top-right">
+					<div class="details-left-info simpleCart_shelfItem">
+						<h3><%=Manual[manu].titulo %></h3>
+						<p class="availability">Stock: <span class="color">Nuevo</span></p>
+						<div class="price_single">
+							<a >Precio:</a>							
+							<span class="actual item_price">$<%=Manual[manu].precio %>.00</span>
+						</div>
+						<h2 class="quick">Descripción:</h2>
+						<p class="quick_desc"><%=Manual[manu].descripcion %></p>
+					  
+						<div class="quantity_box">
+							<ul class="product-qty">
+								<span>Disponibles:</span>
+								<span style="color: green;"><%=Manual[manu].cantidaddispo %></span>
+							</ul>
+						</div>
+					<div class="clearfix"> </div>
+				<div class="single-but">		
+					<% if(Manual[manu].cantidaddispo!=0){ %>			
+						<% if(Agrega=='novalido'){ %>	
+						<form method="POST" action="/info">					
+						<input type="hidden" name="manue" value="<%=Manual[manu].Idmanual %>"/>
+						<input type="submit" value="Agregar al Carrito"/>					
+						</form>
+						<% }else{ %>
+						<a class="btn btn-outline-danger" style="background-color: #dc3545; color: white;" href="/carrito">Producto en el Carrito</a>					
+						<% } %>
+					<% }else{ %>
+						<a class="btn btn-outline-danger" style="background-color: #dc3545; color: white;">No se puede agregar al carrito</a>					
+					<% } %>
+				</div>
+				<div class="single-but item_add">
+						<% if(Manual[manu].cantidaddispo!=0){ %>
+						<form action="/pay" method="post">									
+							<input type="hidden" name="manua1" value="<%=Manual[manu].Idmanual %>"/>	
+							<input type="hidden" name="productpa" value="<%=Manual[manu].titulo %>"/>	
+							<input type="hidden" name="productpre" value="<%=Manual[manu].precio %>"/>
+							<input type="hidden" name="descripmanu" value="<%=Manual[manu].descripcion %>"/>								
+							<button type="submit" class="btn btn-warning">Comprar Ahora</button>	
+						</form>   
+						<% }else{ %>
+							<a class="btn btn-outline-danger" style="background-color: #dc3545; color: white;">Producto AGOTADO</a>					
+					    <% } %>
+				</div>
+			</div>
+		        </div>
+		        <div class="clearfix"></div>
+	            </div>
+               
+    <!--comentarios-->
+    <div class="contact">
+		<div class="container">
+			<div class="contact-top heading"> 
+				<h3>Comentarios</h3>
+				<% for(var comen=0; comen<Comentarios.length; comen++) { %>
+				<h2 class="quick"><%=Comentarios[comen].Nombres %></h2>
+				<p class="quick_desc"><%=Comentarios[comen].comentario %></p>
+				<% } %> 		
+			</div>
+			<div class="contact-bottom"> 
+				<h3>&nbsp;&nbsp;&nbsp;Agregar Comentario:</h3>
+				<form method="POST" action="/infoo" >
+				<div class="col-md-6 contact-left"> 							
+					<input type="hidden" name="manualll" value="<%=Manual[manu].Idmanual %>" >	
+					<input  class="form-control" name="coment" type="text" placeholder="Escribe tu Comentario..." required="">					 				 
+				</div>
+				<div class="col-md-6 contact-left">				 			 
+					<input style="background-color: #dc3545; color:white;" type="submit" class="btn btn-outline-danger" value="Enviar">					
+				</div>
+				</form>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>				
+	<!--fin comentarios-->  
+	<!--Sugerencias-->           
+	<div class="latest products">
+		<h3>&nbsp;&nbsp;&nbsp;Manuales que pueden interesarte</h3>
+		<div class="product-one">
+			<% for(var suge=0; suge<Sugerencia.length; suge++) { %>		
+			<div class="col-md-4 product-left single-left"> 
+				<div class="p-one simpleCart_shelfItem"  style="height: 375px;">
+					<a href="/info?id=<%=Sugerencia[suge].Idmanual %>">
+					<img src="images/<%=Sugerencia[suge].imagen %>" alt="" />
+					<div class="mask mask1">
+						<span>Ver Detalles</span>
+					</div>
+					</a>
+					<h4><%=Sugerencia[suge].titulo %></h4>
+					<p><a href="/info?id=<%=Sugerencia[suge].Idmanual %>"><i></i> <span class=" item_price">$<%=Sugerencia[suge].precio %></span></a></p>
+								
+				</div>
+			</div> 
+			<% } %> 
+			<div class="clearfix"> </div>
+		</div>					 
+	</div>
+	<!--Fin Sugerencias-->  
+</div>
+			<!--M as Información-->    
+            <div class="col-md-3 single-right">
+	            <h3>Más Información</h3>
+	            <ul class="product-categories">
+                    <li><a>Disponibles</a> <span class="count"><%=Manual[manu].cantidaddispo %></span></li>
+		            <li><a>Autor:</a> <span class="count"><%=Manual[manu].autor %></span></li>
+		            <li><a>Tecnología</a> <span class="count"><%=Manual[manu].tecnologia %></span></li>
+					<li><a>Precio:</a> <span class="count">$<%=Manual[manu].precio %>.00</span></li>
+				</ul>  
+			</div>
+			<!--fin mas información-->    
+			<% } %> 
+            <div class="clearfix"> </div>
+    	</div>
+	</div>
+</div>	 
+<!--end-single-->
+<%- include layouts/footer.ejs %>

@@ -1,0 +1,50 @@
+<%- include layouts/header.ejs %> 
+	<!--start-breadcrumbs-->
+	<div class="breadcrumbs">
+		<div class="container">
+			<div class="breadcrumbs-main">
+				<ol class="breadcrumb">
+					<li><a href="/">Inicio</a></li>
+					<li class="active">Productos</li> 
+				</ol>
+			</div>
+		</div>
+	</div>	
+	<!--end-breadcrumbs-->
+	<!--start-product--> 
+	<div class="product">
+		<div class="container">
+			<div class="product-main">
+				<div class="col-md-9 p-left">
+			    <div class="product-one">
+				<% for(var manual=0; manual<Manuales.length; manual++){ %>												
+				<div class="col-md-4 product-left single-left" style="margin-top: 15px;"> 
+					<div class="p-one simpleCart_shelfItem" style="height: 405px;">
+						<form method="GET" action="/info" >
+						<a href="/info?id=<%=Manuales[manual].Idmanual %>">
+							<img src="images/<%=Manuales[manual].imagen %>" alt="" />
+							<div class="mask mask1">									
+								<span>Ver Detalles</span>
+							</div>
+						</a>
+						</form>
+						<h4><%=Manuales[manual].titulo %></h4>
+						<p><a href="/info?id=<%=Manuales[manual].Idmanual %>"><i></i> <span class=" item_price"><%=Manuales[manual].precio %></span></a></p>
+					</div>
+				</div>
+				<% } %>  
+				<div class="clearfix"> </div>
+			    </div> 
+			</div>
+			<div class="col-md-3 p-right single-right">
+				<h3>Categorias</h3>
+					<ul class="product-categories">
+						<li><a href="/productos">Node JS</a></li> 
+					</ul>				  					 
+			</div>
+			<div class="clearfix"> </div>
+		</div>
+	</div>
+	</div>
+	<!--end-product-->
+	<%- include layouts/footer.ejs %>

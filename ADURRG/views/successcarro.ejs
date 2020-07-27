@@ -1,0 +1,57 @@
+<%- include layouts/header.ejs %> 
+<!--start-breadcrumbs-->
+<div class="breadcrumbs">
+    <div class="container">
+        <div class="breadcrumbs-main">
+            <ol class="breadcrumb">
+                <li><a href="/">Inicio</a></li>
+                <li class="active">Compras</li>
+            </ol>
+        </div>
+    </div>
+</div>
+<!--end-breadcrumbs-->
+<!--start-ckeckout-->
+<div class="ckeckout">
+    <div class="container">
+        <div class="ckeckout-top">
+        <div class=" cart-items heading">        
+			<div class="alert alert-success" role="alert">
+				<h4 class="alert-heading">Gracias Por tu Compra!</h4>
+                <p>Estamos agradecidos por comprar con nosotros, tenemos una gran variedad de manuales con la tecnología Node JS.</p>
+                <p>En ADURRG trabajamos las 24 Horas para que tus manuales favoritos siempre permanescan en linea.</p>
+				<hr>
+				<p class="mb-0">NOTA: Solo podras descargar los manuales una vez.</p>
+			</div>
+        <h3>Descarga del Manual</h3>			 				
+        <div class="in-check" >
+            <ul class="unit">
+                <li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                Producto</span></li>
+                <li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nombre</span></li>		
+                <li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  Precio</span></li>
+                <li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  Cantidad</span></li>
+                <li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Link de Descarga</span></li>
+                <div class="clearfix"> </div>
+            </ul>
+            <% for(var manua=0; manua<Manual.length; manua++){ %>	
+            <ul class="cart-header">						
+                     <li class="ring-in">
+                        <a>
+                        <img width="177" height="177" src="images/<%=Manual[manua].imagen %>" class="img-responsive" alt="">						
+                        </a>
+                    </li>
+                    <li><span><%=Manual[manua].titulo %> </span></li>
+                    <li><span>$ <%=Manual[manua].precio %>.00</span></li>
+                    <li><span>1</span></li>
+                    <li><span><a download href="images/<%=Manual[manua].manual %>">Descargar Archivo</a></span></li>						
+                <div class="clearfix"> </div>
+            </ul>
+            <% } %>   
+        </div>
+        </div>  
+     </div>
+    </div>
+</div>
+<!--end-ckeckout-->  
+<%- include layouts/footer.ejs %>

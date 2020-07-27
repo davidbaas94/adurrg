@@ -1,0 +1,91 @@
+<%- include layouts/headeradmin.ejs %> 
+	<!--start-breadcrumbs-->
+	<div class="breadcrumbs">
+		<div class="container">
+			<div class="breadcrumbs-main">
+				<ol class="breadcrumb">
+					<li><a>Inicio</a></li>
+					<li class="active">Ventas</li>
+				</ol>
+			</div>
+		</div>
+	</div>
+	<!--end-breadcrumbs-->
+	<!--start-ckeckout-->
+	<div class="ckeckout">
+		<div class="container">
+			<div class="ckeckout-top">
+					<div class=" cart-items heading">
+							<h3>Manuales Vendidos Hoy</h3>			 
+						   <div class="in-check" >
+							   <ul class="unit">
+								   <li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								   Producto</span></li>
+								   <li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nombre</span></li>		
+								   <li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  Precio</span></li>
+								   <li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  Cantidad</span></li>
+								   <li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Comprador</span></li>
+								   <div class="clearfix"> </div>
+							   </ul>
+							   <% for(var vhoy=0; vhoy<VentasdeHoy.length; vhoy++) { %>
+							   <ul class="cart-header">
+									<li class="ring-in">
+										<a>
+										<img width="117" height="117" src="images/<%=VentasdeHoy[vhoy].imagen %>" class="img-responsive" alt="">
+										<center><%=VentasdeHoy[vhoy].fecha %></center>
+									    </a>
+									</li>
+									<li><span><%=VentasdeHoy[vhoy].titulo %></span></li>
+									<li><span>$ <%=VentasdeHoy[vhoy].precio %>.00</span></li>
+									<li><span>1</span></li>
+									<li><span><%=VentasdeHoy[vhoy].Nombres %> <%=VentasdeHoy[vhoy].Apellidos %></span></li>								   
+							        <div class="clearfix"> </div>
+								</ul> 
+							   <% } %>    
+						   </div>
+						   </div>  
+						</br></br></br>
+			 <div class=" cart-items heading">
+			 <h3>Todos los Manuales Vendidos</h3>				 				
+			<div class="in-check" >
+				<ul class="unit">
+					<li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					Producto</span></li>
+					<li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nombre</span></li>		
+					<li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  Precio</span></li>
+					<li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Cantidad</span></li>
+					<li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Comprador</span></li>
+					<div class="clearfix"> </div>
+				</ul>
+				<% for(var comprado=0; comprado<VentasHechas.length; comprado++) { %>
+				<ul class="cart-header">
+ 						<li class="ring-in">
+							 <a>
+							 <img width="117" height="117" src="images/<%=VentasHechas[comprado].imagen %>" class="img-responsive" alt="">
+							 <center><%=VentasHechas[comprado].fecha %></center> 
+							</a>
+						</li>
+						<li><span><%=VentasHechas[comprado].titulo %></span></li>
+						<li><span>$ <%=VentasHechas[comprado].precio %>.00</span></li>
+						<li><span>1</span></li>
+						<li><span><%=VentasHechas[comprado].Nombres %> <%=VentasHechas[comprado].Apellidos %></span></li>
+					<div class="clearfix"> </div>
+				</ul>
+				<% } %>    
+				<ul class="cart-header2">
+						<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+						<li><span> </span></li>
+						<% for(var final=0; final<VentaTotal.length; final++) { %>
+						<li><span>Total: $<%=VentaTotal[final].total %>.00</span></li>
+						<% } %>    
+						<li><span></span></li>
+						<li><span></span></li>
+						<div class="clearfix"> </div>
+				</ul>
+			</div>
+				</div>  
+		    </div>
+		</div>
+	</div>
+	<!--end-ckeckout-->
+	<%- include layouts/footeradmin.ejs %>

@@ -1,0 +1,52 @@
+<%- include('layouts/header.ejs') %> 
+	<!--start-breadcrumbs-->
+	<div class="breadcrumbs">
+		<div class="container">
+			<div class="breadcrumbs-main">
+				<ol class="breadcrumb">
+					<li><a href="/">Inicio</a></li>
+					<li class="active">Login</li>
+				</ol>
+			</div>
+		</div>
+	</div>
+	<!--end-breadcrumbs-->
+	<!--start-account-->
+	<div class="account">
+		<div class="container"> 
+			<div class="account-bottom"> 
+				<div class="col-md-3 account-left">
+				</div>
+				<div class="col-md-6 account-left">
+					<center>
+						<% if(message!= ''){ %>		
+						<div class="alert alert-success" role="alert">
+							<%= message %>
+						</div>
+						<% } %>
+					</center>
+				</br></br>
+					<form action="/login" method="POST">
+					<div class="account-top heading">
+						<h3>Inicio de Sesión</h3>
+					</div>
+					<div class="address">
+						<span>Correo Electonico</span>
+						<input type="text" name="correo" required>
+					</div>
+					<div class="address">
+						<span>Contraseña</span>
+						<input type="text" name="contrasena" required>
+					</div>
+					<div class="address">
+						<a class="forgot" href="/registro">¿No tienes cuenta? Registrate Aqui </a>
+						<input type="submit" value="Login">
+					</div>
+					</form>
+				</div>				
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+	<!--end-account-->	
+	<%- include('layouts/footer.ejs') %>
