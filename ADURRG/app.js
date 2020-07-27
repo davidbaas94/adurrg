@@ -14,9 +14,6 @@ app.set('port', process.env.PORT || 5000);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-var server = app.listen(process.env.PORT || 443 , () => {
-  console.log('Server is started on 127.0.0.1:'+ (process.env.PORT || 443 ))
-})
 
 
 app.use(logger('dev'));
