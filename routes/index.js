@@ -541,7 +541,7 @@ const storage = multer.diskStorage({
 
   }
 });
-const upload= multer({storage, dest: path.join(__dirname, '../public/images')
+const upload = multer({storage, dest: path.join(__dirname, '../public/images')
 });
 
 /* GET  agregar manual. */
