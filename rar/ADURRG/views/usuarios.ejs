@@ -1,0 +1,55 @@
+<%- include layouts/headeradmin.ejs %> 
+	<!--start-breadcrumbs-->
+	<div class="breadcrumbs">
+		<div class="container">
+			<div class="breadcrumbs-main">
+				<ol class="breadcrumb">
+					<li><a>Inicio</a></li>
+					<li class="active">Usuarios</li>
+				</ol>
+			</div>
+		</div>
+	</div>
+	<!--end-breadcrumbs-->
+	<!--start-ckeckout-->
+	<div class="ckeckout">
+		<div class="container">
+			<div class="ckeckout-top">   
+			 <div class=" cart-items heading">
+			 <h3>Usuarios Registrados</h3>				 				
+			<div class="in-check" >
+				<ul class="unit">
+					<li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					Nombres</span></li>
+					<li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Apellidos</span></li>		
+					<li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  Correo</span></li>
+					<li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Contraseña</span></li>
+					<li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Tipo / Acciones</span></li>
+					<div class="clearfix"> </div>
+				</ul>
+				<% for(var user=0; user<Usuarios.length; user++) { %>
+				<ul class="cart-header">
+ 						<li class="ring-in"><span><%=Usuarios[user].Nombres %> </span>
+						</li>
+						<li><span><%=Usuarios[user].Apellidos %></span></li>
+						<li><span><%=Usuarios[user].correo %></span></li>
+						<li><span><%=Usuarios[user].contrasena %></span></li>
+						<li>
+							<span>
+								<% if(Usuarios[user].tipo==1){%>
+								Cliente <a href="/deleteuser?id=<%=Usuarios[user].id %> " class="btn btn-danger">Eliminar</a>
+								<% } else {%>
+								Admin <a href="/deleteuser?id=<%=Usuarios[user].id %> " class="btn btn-danger">Eliminar</a>
+								<% } %>
+						 </span>
+						</li>
+					<div class="clearfix"> </div>
+				</ul>
+				<% } %>     
+			</div>
+				</div>  
+		    </div>
+		</div>
+	</div>
+	<!--end-ckeckout-->
+	<%- include layouts/footeradmin.ejs %>
