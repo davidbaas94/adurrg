@@ -10,6 +10,8 @@ var db = require("../conexion/conexion");
 //PaypalSTART
 var paypal= require('paypal-rest-sdk');
 //PaypalEND
+const app = require('../app');
+
 
 //LOGINSTART
 router.use(session({
