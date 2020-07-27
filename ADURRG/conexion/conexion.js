@@ -1,8 +1,8 @@
 var mysql = require('mysql')
 var connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '',
+  host: 'adurrg-mysqldbserver.mysql.database.azure.com',
+  user: 'mysqldbuser',
+  password: 'UTM@9cdaw',
   database: 'adurrg',
   multipleStatements: true
 })
@@ -19,5 +19,10 @@ connection.connect(
 
 module.exports= connection;
 
+/*
+connection.query("SELECT * FROM usuarios", function(err,resultados){console.log(resultados)});
 
+
+connection.end()
+*/
 
