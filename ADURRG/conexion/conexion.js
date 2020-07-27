@@ -4,9 +4,7 @@ var connection = mysql.createConnection({
   user: 'mysqldbuser@adurrg-mysqldbserver',
   password: 'UTM@9cdaw',
   database: 'adurrg',
-  multipleStatements: true,
-  port: 3306,
-  ssl: true
+  multipleStatements: true
 })
 
 connection.connect(
