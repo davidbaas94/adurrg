@@ -237,9 +237,9 @@ router.get('/successcarro',function(req, res, next) {
 router.get('/', function(req, res, next) {
 
   db.query("SELECT Idmanual,titulo,precio,imagen  FROM manual WHERE cantidaddispo>0 ORDER BY Idmanual ASC LIMIT 8;", function(err,inicioman){
-    if (err) throw err; 
+    if (err) 
       db.query("SELECT manual.titulo, manual.descripcion, manual.cantidaddispo, manual.imagen, venta.Idmanual, SUM(1) AS vendidos from manual JOIN venta on manual.Idmanual = venta.Idmanual GROUP BY venta.Idmanual ORDER BY vendidos DESC LIMIT 5 ", function(err,masvendido){
-        if (err) throw err; 
+        if (err) 
           if (req.session.username)
           {
           res.render('index', { title: 'Manuales Digitales de programación', Productos: inicioman, Vendidos: masvendido, nombre: 'Hola '+ req.session.nombre});   
