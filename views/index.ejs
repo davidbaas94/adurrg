@@ -1,0 +1,115 @@
+<%- include('layouts/header.ejs') %> 
+<!--banner-starts-->
+<div class="bnr" id="home">
+  <div  id="top" class="callbacks_container">
+    <ul class="rslides" id="slider4">
+        <li>
+        <div class="banner-1"></div>
+      </li>
+      <li>
+        <div class="banner-2"></div>
+      </li>
+      <li>
+        <div class="banner-3"></div>
+      </li>
+    </ul>
+  </div>
+  <div class="clearfix"> </div>
+</div>
+<!--banner-ends--> 
+<!--Slider-Starts-Here-->
+      <script src="js/responsiveslides.min.js"></script>
+     <script>
+        // You can also use "$(window).load(function() {"
+        $(function () {
+          // Slideshow 4
+          $("#slider4").responsiveSlides({
+            auto: true,
+            pager: true,
+            nav: false,
+            speed: 500,
+            namespace: "callbacks",
+            before: function () {
+              $('.events').append("<li>before event fired.</li>");
+            },
+            after: function () {
+              $('.events').append("<li>after event fired.</li>");
+            }
+          });
+    
+        });
+      </script>
+    <!--End-slider-script-->
+<!--start-banner-bottom--> 
+<div class="banner-bottom">
+  <div class="container">
+    <div class="banner-bottom-top">
+      <% for(var ven1=0; ven1<2; ven1++) { %>
+      <div class="col-md-6 banner-bottom-left">
+        <div class="bnr-one">
+          <span style="background-color: orange; color: white;">Mas Vendido</span>
+          <div class="bnr-left">
+            <h1><a href="/info?id=<%=Vendidos[ven1].Idmanual %>"><%=Vendidos[ven1].titulo %></a></h1>
+            <p>Descripción: <br><%=Vendidos[ven1].descripcion %> </p>
+            <div class="b-btn"> 
+              <a href="/info?id=<%=Vendidos[ven1].Idmanual %>">Ver Detalles</a>
+            </div>
+          </div>
+          <div class="bnr-right"> 
+            <a href="/info?id=<%=Vendidos[ven1].Idmanual %>"><img width="150" height="150" src="images/<%=Vendidos[ven1].imagen %>" alt="" /></a>
+          </div>
+          <div class="clearfix"> </div>
+        </div>
+      </div> 
+      <% } %>  
+      <div class="clearfix"> </div>
+    </div>
+  </div>
+</div>
+<!--end-banner-bottom--> 
+<!--start-shoes--> 
+<div class="shoes"> 
+  <div class="container"> 
+    <div class="product-one">
+      <% for(var antigu=0; antigu<Productos.length; antigu++) { %>
+      <div class="col-md-3 product-left" style="margin-top: 15px;"> 
+        <div class="p-one simpleCart_shelfItem" style="height: 375px;">							
+            <a href="/info?id=<%=Productos[antigu].Idmanual %>">
+              <img src="images/<%=Productos[antigu].imagen %>" alt="" />
+              <div class="mask">
+                <span>Ver Detalles</span>
+              </div>
+            </a>
+          <h4><%=Productos[antigu].titulo %></h4>
+          <p><a  href="/info?id=<%=Productos[antigu].Idmanual %>"><i></i> <span class=" item_price"><%=Productos[antigu].precio %></span></a></p>
+        
+        </div>
+      </div>
+      <% } %>  
+      <div class="clearfix"> </div>
+    </div> 
+  </div>
+</div>
+<!--end-shoes-->
+<!--start-abt-shoe-->
+<div class="abt-shoe">
+  <div class="container"> 
+    <div class="abt-shoe-main">
+      <% for(var ven2=2; ven2<5; ven2++) { %>
+      <div class="col-md-4 abt-shoe-left">
+        <div class="abt-one">
+          <a href="/info?id=<%=Vendidos[ven2].Idmanual %>">
+            <img style="width: 220; height: 220;" src="images/<%=Vendidos[ven2].imagen %>" alt="" />
+          </a>
+          <h4><a href="/info?id=<%=Vendidos[ven2].Idmanual %>"><%=Vendidos[ven2].titulo %></a></h4>
+          <p><%=Vendidos[ven2].descripcion %></p>
+          <span style="background-color: orange; color: white;">Mas Vendido</span>
+        </div>
+      </div>
+      <% } %>  
+      <div class="clearfix"> </div>
+    </div>
+  </div>
+</div>
+<!--end-abt-shoe-->
+<%- include('layouts/footer.ejs') %>
